@@ -16,11 +16,13 @@
         >
           Claim TRON
         </button>
-        <p>Claim free TRON every hours. Last claim {{ moment(lastTime).fromNow() }}</p>
+        <p>
+          Claim free TRON every hours.
+          {{ moment(nextTime).calendar() }} can claim again
+        </p>
       </div>
 
       <div class="col-12 mb-3">
-
         <table class="table table-striped text-center">
           <thead>
             <tr class="text-primary">
@@ -77,14 +79,13 @@ export default {
       isLoading: false,
       userName: "",
       balance: 0,
-      lastTime: 0,
+      nextTime: Date.now(),
     };
   },
   mounted: function () {
     this.userName = localStorage.getItem("userName");
     this.fetchProfile();
     this.check();
-    setInterval(() => this.check(), 6e4);
   },
   methods: {
     fetchProfile: function () {
@@ -110,7 +111,7 @@ export default {
       }).then((response) => {
         let data = response.data;
         // console.log(data);
-        this.lastTime = data.data.lastTime;
+        this.nextTime = data.data.nextTime;
       });
     },
     claim: function () {
