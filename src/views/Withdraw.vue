@@ -68,11 +68,15 @@ export default {
       axios({
         url: API_URL + "/profile?userName=" + localStorage.getItem("userName"),
         method: "GET",
-      }).then((response) => {
-        let data = response.data;
-        // console.log(data);
-        this.balance = data.data.balance;
-      });
+      })
+        .then((response) => {
+          let data = response.data;
+          // console.log(data);
+          this.balance = data.data.balance;
+        })
+        .catch(() => {
+          this.logout();
+        });
     },
     fetchWithdraw: function () {
       axios({

@@ -194,16 +194,20 @@ export default {
       axios({
         url: API_URL + "/profile?userName=" + localStorage.getItem("userName"),
         method: "GET",
-      }).then((response) => {
-        let data = response.data;
-        // console.log(data);
-        this.balance = data.data.balance;
-        this.profit = data.data.profit;
-        this.wagered = data.data.wagered;
-        this.bets = data.data.bets;
-        this.wins = data.data.wins;
-        this.losses = data.data.losses;
-      });
+      })
+        .then((response) => {
+          let data = response.data;
+          // console.log(data);
+          this.balance = data.data.balance;
+          this.profit = data.data.profit;
+          this.wagered = data.data.wagered;
+          this.bets = data.data.bets;
+          this.wins = data.data.wins;
+          this.losses = data.data.losses;
+        })
+        .catch(() => {
+          this.logout();
+        });
     },
     fetchDeposit: function () {
       axios({

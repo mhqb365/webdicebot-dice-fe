@@ -53,11 +53,15 @@ export default {
       axios({
         url: API_URL + "/profile?userName=" + localStorage.getItem("userName"),
         method: "GET",
-      }).then((response) => {
-        let data = response.data;
-        // console.log(data);
-        this.address = data.data.address;
-      });
+      })
+        .then((response) => {
+          let data = response.data;
+          // console.log(data);
+          this.address = data.data.address;
+        })
+        .catch(() => {
+          this.logout();
+        });
     },
     fetchDeposit: function () {
       axios({

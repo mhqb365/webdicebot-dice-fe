@@ -18,7 +18,7 @@
         </button>
         <p>
           Claim free TRON every hours.
-          {{ moment(nextTime).calendar() }} can claim again
+          {{ nextTime }} can claim
         </p>
       </div>
 
@@ -92,11 +92,15 @@ export default {
       axios({
         url: API_URL + "/profile?userName=" + localStorage.getItem("userName"),
         method: "GET",
-      }).then((response) => {
-        let data = response.data;
-        // console.log(data);
-        this.balance = data.data.balance;
-      });
+      })
+        .then((response) => {
+          let data = response.data;
+          // console.log(data);
+          this.balance = data.data.balance;
+        })
+        .catch(() => {
+          this.logout();
+        });
     },
     check: function () {
       axios({
@@ -111,7 +115,9 @@ export default {
       }).then((response) => {
         let data = response.data;
         // console.log(data);
-        this.nextTime = data.data.nextTime;
+        data.data.nextTime < Date.now()
+          ? (this.nextTime = "Now")
+          : (this.nextTime = this.moment(data.data.nextTime).calendar());
       });
     },
     claim: function () {
@@ -133,6 +139,8 @@ export default {
         this.showAlert(
           `Lucky number is ${data.data.result}, you got ${data.data.prize} TRX, check it at deposit list`
         );
+        this.fetchProfile();
+        this.check();
       });
     },
   },
