@@ -156,6 +156,8 @@
         </tbody>
       </table>
     </div>
+
+    <p class="text-center">Bet history will be deleted every day</p>
   </div>
 </template>
 

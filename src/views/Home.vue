@@ -58,14 +58,14 @@
           </tbody>
         </table>
       </div>
-
-      <div class="col-12 mb-3 text-center">
-        <router-link to="/dice">
-          Why not try to multiply your TRON up 99.98 times by playing a provably
-          fair Dice game!
-        </router-link>
-      </div>
     </div>
+
+    <p class="text-center">
+      <router-link to="/dice">
+        Why not try to multiply your TRON up 99.98 times by playing a provably
+        fair Dice game!
+      </router-link>
+    </p>
   </div>
 </template>
 
