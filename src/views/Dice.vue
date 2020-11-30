@@ -44,10 +44,34 @@
           </div>
           <input type="number" class="form-control" v-model="betAmount" />
           <div class="input-group-append">
-              <button type="button" class="btn btn-primary" @click="changeAmount(0)">Min</button>
-              <button type="button" class="btn btn-warning" @click="changeAmount(1)">X2</button>
-              <button type="button" class="btn btn-primary" @click="changeAmount(2)">1/2</button>
-              <button type="button" class="btn btn-danger" @click="changeAmount(3)">Max</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              @click="changeAmount(0)"
+            >
+              Min
+            </button>
+            <button
+              type="button"
+              class="btn btn-warning"
+              @click="changeAmount(1)"
+            >
+              X2
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              @click="changeAmount(2)"
+            >
+              1/2
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              @click="changeAmount(3)"
+            >
+              Max
+            </button>
           </div>
         </div>
       </div>
@@ -251,6 +275,8 @@ export default {
         this.betProfit = data.data.profit.toFixed(6);
         this.balance = data.data.balance;
         this.profit += Number(data.data.profit);
+        this.bets += 1;
+        data.data.win ? (this.wins += 1) : (this.losses += 1);
         let target = `${
           data.data.direction == "under" ? "less than" : "more than"
         } ${data.data.prediction}`;
