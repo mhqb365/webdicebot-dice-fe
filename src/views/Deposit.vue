@@ -71,7 +71,9 @@ export default {
         let data = response.data;
         // console.log(data);
         if (data.data.docs.length == 0)
-          return $("#list").html(`¯|_(ツ)_/¯ You don’t have any deposit yet`);
+          return $("#list").html(
+            `<p class="text-center">¯|_(ツ)_/¯ You don’t have any deposit yet</p>`
+          );
         this.depList = data.data.docs;
       });
     },

@@ -86,7 +86,9 @@ export default {
         let data = response.data;
         // console.log(data);
         if (data.data.docs.length == 0)
-          return $("#list").html(`¯|_(ツ)_/¯ You don’t have any withdraw yet`);
+          return $("#list").html(
+            `<p class="text-center">¯|_(ツ)_/¯ You don’t have any deposit yet</p>`
+          );
         this.withdrawList = data.data.docs;
       });
     },
