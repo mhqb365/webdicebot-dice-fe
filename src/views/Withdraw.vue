@@ -6,7 +6,7 @@
     </div>
 
     <div class="form-group">
-      <label>Amount (Min: 500)</label>
+      <label>Amount (Min: 500, withdraw fee: 1)</label>
       <input type="number" class="form-control" v-model="amount" />
     </div>
 
