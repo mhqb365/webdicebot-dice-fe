@@ -137,7 +137,7 @@ export default {
         // console.log(data);
         if (!data.status) return this.showAlert(data.message, false);
         this.showAlert(
-          `Lucky number is ${data.data.result}, you got ${data.data.prize} TRX, check it at deposit list`
+          `Lucky number is ${data.data.result}, you got ${data.data.prize} TRX`
         );
         this.fetchProfile();
         this.check();
